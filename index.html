@@ -1,10 +1,381 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            font-size: 0.95em;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .section-content.active {
+            max-height: 1000px;
+        }
+
+        .section-title {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .toggle-icon {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .job, .education, .skill-group {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .job:last-child, .education:last-child, .skill-group:last-child {
+            border-bottom: none;
+        }
+
+        .job-title, .degree {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .company, .school {
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .description {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            background: #667eea;
+            color: white;
+        }
+
+        .about-text {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .contact-info {
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Welcome to My Website</h1>
+    <div class="container">
+        <header>
+            <h1>Riccardo M. Bonato</h1>
+            <p>Software Engineer</p>
+            <div class="contact-info">
+                <span>📧 Rickst0702@Gmail.com</span>
+                <span>📱 (66+) 96-771-5888</span>
+                <span>📍 Bangkok, Thailand</span>
+            </div>
+        </header>
+
+        <main>
+            <!-- About Section -->
+            <section id="about-section">
+                <div class="section-title" onclick="toggleSection('about')">
+                    <h2>About Me</h2>
+                    <span class="toggle-icon">−</span>
+                </div>
+                <div class="section-content active">
+                    <p class="about-text">
+                        Software Engineer with experience in full-stack web development, game development, and AI/ML projects. Multilingual (Thai Native, English Master, Italian Native). Currently studying B.E. in Software and Knowledge Engineering at Kasetsart University while working as IT/Tech Support and Translator at Guru Electronics. Skilled in Python, JavaScript, C#, and various frameworks including Django, Next.js, and Unity.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience-section">
+                <div class="section-title" onclick="toggleSection('experience')">
+                    <h2>Experience</h2>
+                    <span class="toggle-icon">−</span>
+                </div>
+                <div class="section-content active">
+                    <div class="job">
+                        <div class="job-title">IT/Tech Support & Translator</div>
+                        <div class="company">Guru Electronics</div>
+                        <div class="date">June 2023 - Present</div>
+                        <div class="description">
+                            Multilingual translator (Thai, English, Italian). Provided software & hardware support to clients. Handled customer sales support and initial web development setup for clients. Managed product delivery across the country and performed media editing using Vegas Pro, Photoshop, and Blender. Intermediate experience with Epoxy Resin work.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education-section">
+                <div class="section-title" onclick="toggleSection('education')">
+                    <h2>Education</h2>
+                    <span class="toggle-icon">−</span>
+                </div>
+                <div class="section-content active">
+                    <div class="education">
+                        <div class="degree">Bachelor's Degree - B.E. in Software and Knowledge Engineering</div>
+                        <div class="school">Kasetsart University</div>
+                        <div class="date">June 2023 - October 2027</div>
+                    </div>
+
+                    <div class="education">
+                        <div class="degree">High School Diploma - English & Mathematics</div>
+                        <div class="school">Satriwitthaya 2 School</div>
+                        <div class="date">May 2017 - March 2023</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects-section">
+                <div class="section-title" onclick="toggleSection('projects')">
+                    <h2>Projects</h2>
+                    <span class="toggle-icon">−</span>
+                </div>
+                <div class="section-content active">
+                    <div class="job">
+                        <div class="job-title">SleepEfficiencyPrediction</div>
+                        <div class="company">Django Web App</div>
+                        <div class="description">
+                            Full-stack web application and API that predicts sleep efficiency and provides access to users' sleep information. Combines sensor data (temperature, humidity, heartbeat) for comprehensive analysis.
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">UniPlus</div>
+                        <div class="company">Django & Next.js Web App</div>
+                        <div class="description">
+                            Comprehensive university event management platform enabling event discovery and registration. Provides organizers with tools to create events, manage registrations, and track attendance through QR code scanning.
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Tactical-Hero-Battle-Game</div>
+                        <div class="company">Python</div>
+                        <div class="description">
+                            2D side-scrolling tactical strategy game combining tower defense mechanics inspired by Line Ranger and Battle Cats. Built with OOP principles.
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Maze Escape</div>
+                        <div class="company">Unreal Engine 4 (C++, Blueprints)</div>
+                        <div class="description">
+                            3D horror maze puzzle built with UE4 as a functional demo.
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Chimera</div>
+                        <div class="company">Unity (C#)</div>
+                        <div class="description">
+                            2D side-scrolling game that combines different mob DNA to evolve the player character. Current side project.
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">E-Commerce Stores</div>
+                        <div class="company">Shopify Web Apps</div>
+                        <div class="description">
+                            Built multiple fully functional e-commerce stores: Cotour Jerdan (luxury furniture) and Chess Haven (custom chess sets). Implemented custom product catalogs, payment processing, and inventory management systems.
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Fruits Anomaly Detector</div>
+                        <div class="company">AI/ML (Cira-core)</div>
+                        <div class="description">
+                            AI deep learning model trained to detect bruises and anomalies on conveyor belt fruits for separation. Designed for farms and factories to maximize separation speed without manual labor.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills-section">
+                <div class="section-title" onclick="toggleSection('skills')">
+                    <h2>Skills</h2>
+                    <span class="toggle-icon">−</span>
+                </div>
+                <div class="section-content active">
+                    <div class="skills-container">
+                        <div class="skill">JavaScript/TypeScript</div>
+                        <div class="skill">Python</div>
+                        <div class="skill">C#/C++</div>
+                        <div class="skill">Go</div>
+                        <div class="skill">Kotlin</div>
+                        <div class="skill">Django</div>
+                        <div class="skill">Next.js</div>
+                        <div class="skill">React</div>
+                        <div class="skill">Unity</div>
+                        <div class="skill">Unreal Engine</div>
+                        <div class="skill">Docker</div>
+                        <div class="skill">Git</div>
+                        <div class="skill">MySQL/PostgreSQL</div>
+                        <div class="skill">REST APIs</div>
+                        <div class="skill">Blender</div>
+                        <div class="skill">Photoshop</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Riccardo M. Bonato. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSection(sectionName) {
+            const section = document.getElementById(sectionName + '-section');
+            const content = section.querySelector('.section-content');
+            const icon = section.querySelector('.toggle-icon');
+
+            content.classList.toggle('active');
+
+            // Change icon
+            if (content.classList.contains('active')) {
+                icon.textContent = '−';
+            } else {
+                icon.textContent = '+';
+            }
+        }
+
+        // Optional: Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Resume website loaded!');
+        });
+    </script>
 </body>
 </html>
-```
